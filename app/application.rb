@@ -7,10 +7,10 @@ class Application
 
     #Index Routes
 
-    if req.path.match(/test/)         //? TEST PATH LOGIC
+    if req.path.match(/test/)       
       return [200, { 'Content-Type' => 'application/json' }, [ {:message => "test response!"}.to_json ]]
       
-    elsif req.path.match(/users/)     //? USERS PATH LOGIC
+    elsif req.path.match(/users/)   
       if req.env["REQUEST_METHOD"] == "GET"
           if req.path.split("/users").length  == 0
             users = User.all
@@ -23,13 +23,13 @@ class Application
         return [200, {'Content-Type' => 'application/json'}, [new_user.to_json]] 
       end
       
-    elsif req.path.match(/stories/)    //? STORIES PATH LOGIC
+    elsif req.path.match(/stories/)    
       if req.env["REQUEST_METHOD"] == "GET"
         if req.path.split("/stories").length == 0
           stories = Story.all
           return [200, { 'Content-Type' => 'application/json' }, [ stories.to_json ]]
         else
-          story_id = req.path.split('/stories/')[1].to_i        #? view story by index
+          story_id = req.path.split('/stories/')[1].to_i       
           found_story = Story.find_by(id: story_id)
           return [200, { 'Content-Type' => 'application/json' }, [ found_story.to_json ]]
         end
@@ -44,7 +44,7 @@ class Application
         return [200, { 'Content-Type' => 'application/json' }, [ stories.to_json ]]
       end
       
-      elsif req.path.match(/words/)   //? WORDS PATH LOGIC
+      elsif req.path.match(/words/)   
         if req.env["REQUEST_METHOD"] == "GET"
           if req.path.split("/words").length == 0
             words = Word.all
