@@ -36,7 +36,8 @@ class Application
       end
       if req.env["REQUEST_METHOD"] == "POST"
         form_data = JSON.parse(req.body.read)
-        new_story = Story.create(title: form_data["title"], content: form_data["content"])
+        new_story = Story.create(title: form_data["title"], content: form_data["content"], 
+          user_id: form_data["user_id"], author: form_data["author"])
         return [200, {'Content-Type' => 'application/json'}, [ new_story.to_json ]] 
       end
       if req.env["REQUEST_METHOD"] == "DELETE"
