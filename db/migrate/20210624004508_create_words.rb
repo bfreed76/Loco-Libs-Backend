@@ -4,6 +4,6 @@ class CreateWords < ActiveRecord::Migration[6.1]
     t.string :word
     t.integer :story_id
     t.timestamps
+    end
   end
-end
 end
