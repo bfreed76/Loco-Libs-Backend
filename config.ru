@@ -3,7 +3,7 @@
 require 'rack/cors'
 require_relative "./config/environment.rb"
 
-# use Rack-cors to allow CORS on our server  
+#? ALLOW CORS ON SERVER
 
 use Rack::Cors do
 

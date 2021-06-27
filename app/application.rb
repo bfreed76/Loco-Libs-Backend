@@ -1,11 +1,11 @@
 class Application
 
   def call(env) #env = all environment vars
-    #define a response and request here
+  
     resp = Rack::Response.new #rack gem with response module
     req = Rack::Request.new(env)
 
-    #Index Routes
+    #? INDEX ROUTS AND RESPONSES (TEST, USERS GET/POST, STORIES DELETE/GET/POST AND WORDS(FOR FUTURE DEVELOPMENT))
 
     if req.path.match(/test/)       
       return [200, { 'Content-Type' => 'application/json' }, [ {:message => "test response!"}.to_json ]]
@@ -24,6 +24,10 @@ class Application
       end
       
     elsif req.path.match(/stories/)    
+      if req.env["REQUEST_METHOD"] == "DELETE"
+        stories = Story.all.last.delete
+        return [200, { 'Content-Type' => 'application/json' }, [ stories.to_json ]]
+      end
       if req.env["REQUEST_METHOD"] == "GET"
         if req.path.split("/stories").length == 0
           stories = Story.all
@@ -40,10 +44,6 @@ class Application
           user_id: form_data["user_id"], author: form_data["author"])
         return [200, {'Content-Type' => 'application/json'}, [ new_story.to_json ]] 
       end
-      if req.env["REQUEST_METHOD"] == "DELETE"
-        stories = Story.all.last.delete
-        return [200, { 'Content-Type' => 'application/json' }, [ stories.to_json ]]
-      end
       
       elsif req.path.match(/words/)   
         if req.env["REQUEST_METHOD"] == "GET"
@@ -59,5 +59,4 @@ class Application
 
     resp.finish
   end
-
 end
