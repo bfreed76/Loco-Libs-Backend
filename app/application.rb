@@ -5,7 +5,7 @@ class Application
     resp = Rack::Response.new #rack gem with response module
     req = Rack::Request.new(env)
 
-    #? INDEX ROUTS AND RESPONSES (TEST, USERS GET/POST, STORIES DELETE/GET/POST AND WORDS(FOR FUTURE DEVELOPMENT))
+    #? INDEX ROUTES AND RESPONSES (TEST, USERS GET/POST, STORIES DELETE/GET/POST AND WORDS(FOR FUTURE DEVELOPMENT))
 
     if req.path.match(/test/)       
       return [200, { 'Content-Type' => 'application/json' }, [ {:message => "test response!"}.to_json ]]
