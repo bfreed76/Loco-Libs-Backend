@@ -1,5 +1,5 @@
 require_relative 'config/environment.rb'
-require 'sinatra/activerecord/rake'
+require 'sinatra/activerecord/rake' #bring in rake tasks for comms with db
 
 #? RAKE FILE STARTUP WITH HEADER
 

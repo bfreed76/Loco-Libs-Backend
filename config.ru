@@ -14,4 +14,4 @@ use Rack::Cors do
 end
 
 
-run Application.new
+run Application.new #starts app via shotgun

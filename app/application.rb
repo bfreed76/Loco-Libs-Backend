@@ -2,13 +2,13 @@ class Application
 
   def call(env) #env = all environment vars
   
-    resp = Rack::Response.new #rack gem with response module
-    req = Rack::Request.new(env)
+    resp = Rack::Response.new #response: new instance of the rack response
+    req = Rack::Request.new(env) #request
 
     #? INDEX ROUTES AND RESPONSES (TEST, USERS GET/POST, STORIES DELETE/GET/POST AND WORDS(FOR FUTURE DEVELOPMENT))
 
     if req.path.match(/test/)       
-      return [200, { 'Content-Type' => 'application/json' }, [ {:message => "test response!"}.to_json ]]
+      return [200, { 'Content-Type' => 'application/json' }, [ {:message => "test successful!"}.to_json ]]
       
     elsif req.path.match(/users/)   
       if req.env["REQUEST_METHOD"] == "GET"
