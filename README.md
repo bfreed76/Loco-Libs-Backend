@@ -40,6 +40,8 @@ Project Link: [PC Gamefinder](https://pc-gamefinder.herokuapp.com/)
 <img src="./public/llscreen4.jpeg" alt="llscreen4">
 </p>
 
+Stay tuned for more readme 10/22/21.
+
 ## Requirements
 
 - Ruby 2.7.4
